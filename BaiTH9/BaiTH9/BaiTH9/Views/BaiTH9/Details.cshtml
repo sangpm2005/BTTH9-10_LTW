@@ -1,0 +1,35 @@
+﻿@model BaiTH9.Models.Sach
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="section-title">Chi Tiết Sản Phẩm</h2>
+<div class="container">
+    <div class="product-detail">
+        <div class="product-image">
+            <img id="detail-image" src="~/Content/HinhAnhSP/@Model.AnhBia" alt="@Model.TenSach">
+        </div>
+        <div class="product-info">
+            <h1 id="detail-title" class="product-title">@Model.TenSach</h1>
+            <p id="detail-price" class="product-price">@Model.GiaBan</p>
+            <p id="detail-description" class="product-description">
+                @Model.MoTa
+            </p>
+            <p id="detail-description" class="product-description">
+                Tác giả: 
+            </p>
+            <ul>
+                @foreach(var tg in Model.ThamGias.Select(t => t.TacGia))
+                {
+                    <li>@tg.TenTacGia</li>
+                }
+            </ul>
+            <div class="product-actions">
+                <button class="btn-buy">Mua Ngay</button>
+                <button class="card-button" onclick="@Url.Action("Index","BaiTH9")">Quay Lại</button>
+            </div>
+        </div>
+    </div>
+</div>

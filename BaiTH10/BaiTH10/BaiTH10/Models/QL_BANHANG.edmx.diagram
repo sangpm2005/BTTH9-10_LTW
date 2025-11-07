@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="296c4eba34704638bfbf432a27648c88" Name="Diagram1">
+        <EntityTypeShape EntityType="QL_BANHANGModel.ChiTiet" Width="1.5" PointX="5.25" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_BANHANGModel.HoaDon" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_BANHANGModel.KhachHang" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_BANHANGModel.SanPham" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <AssociationConnector Association="QL_BANHANGModel.FK__ChiTiet__MaHD__5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_BANHANGModel.FK__ChiTiet__MaSP__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_BANHANGModel.FK__HoaDon__MaKH__5070F446" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

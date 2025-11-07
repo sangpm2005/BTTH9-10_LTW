@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="form-container">
+        <h2 class="form-title">Đăng Nhập</h2>
+        <form id="loginForm" method="post" action="@Url.Action("Login","BaiTH9")">
+            <div class="form-group">
+                <label for="loginTaiKhoan">Tài Khoản</label>
+                <input type="text" id="loginTaiKhoan" name="tk" required>
+            </div>
+            <div class="form-group">
+                <label for="loginPassword">Mật khẩu</label>
+                <input type="password" id="loginPassword" name="mk" required>
+            </div>
+            <button type="submit" class="form-button">Đăng Nhập</button>
+        </form>
+        <div class="form-footer">
+            <p>Chưa có tài khoản? <a href="@Url.Action("Register","BaiTH9")" onclick="showPage('register')">Đăng ký ngay</a></p>
+        </div>
+        @if (ViewBag.Error != null)
+        {
+            <div class="alert alert-danger" style="margin-bottom:10px;">
+                @ViewBag.Error
+            </div>
+        }
+    </div>
+</div>
+
+

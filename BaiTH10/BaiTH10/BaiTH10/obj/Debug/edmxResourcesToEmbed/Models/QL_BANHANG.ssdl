@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QL_BANHANGModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ChiTiet">
+    <Key>
+      <PropertyRef Name="MaHD" />
+      <PropertyRef Name="MaSP" />
+    </Key>
+    <Property Name="MaHD" Type="int" Nullable="false" />
+    <Property Name="MaSP" Type="int" Nullable="false" />
+    <Property Name="SoLuong" Type="int" />
+  </EntityType>
+  <EntityType Name="HoaDon">
+    <Key>
+      <PropertyRef Name="MaHoaDon" />
+    </Key>
+    <Property Name="MaHoaDon" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NgayHoaDon" Type="date" />
+    <Property Name="MaKH" Type="int" />
+  </EntityType>
+  <EntityType Name="KhachHang">
+    <Key>
+      <PropertyRef Name="MaKhachHang" />
+    </Key>
+    <Property Name="MaKhachHang" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenKH" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="DiaChi" Type="nvarchar" MaxLength="200" />
+    <Property Name="SoDienThoai" Type="varchar" MaxLength="15" />
+  </EntityType>
+  <EntityType Name="SanPham">
+    <Key>
+      <PropertyRef Name="MaSanPham" />
+    </Key>
+    <Property Name="MaSanPham" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenSP" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="DonGia" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="HinhAnh" Type="nvarchar" MaxLength="255" />
+    <Property Name="MoTa" Type="nvarchar" MaxLength="255" />
+    <Property Name="SoLuongTon" Type="int" />
+  </EntityType>
+  <Association Name="FK__ChiTiet__MaHD__5441852A">
+    <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1" />
+    <End Role="ChiTiet" Type="Self.ChiTiet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HoaDon">
+        <PropertyRef Name="MaHoaDon" />
+      </Principal>
+      <Dependent Role="ChiTiet">
+        <PropertyRef Name="MaHD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChiTiet__MaSP__5535A963">
+    <End Role="SanPham" Type="Self.SanPham" Multiplicity="1" />
+    <End Role="ChiTiet" Type="Self.ChiTiet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SanPham">
+        <PropertyRef Name="MaSanPham" />
+      </Principal>
+      <Dependent Role="ChiTiet">
+        <PropertyRef Name="MaSP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HoaDon__MaKH__5070F446">
+    <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="0..1" />
+    <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhachHang">
+        <PropertyRef Name="MaKhachHang" />
+      </Principal>
+      <Dependent Role="HoaDon">
+        <PropertyRef Name="MaKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QL_BANHANGModelStoreContainer">
+    <EntitySet Name="ChiTiet" EntityType="Self.ChiTiet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HoaDon" EntityType="Self.HoaDon" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KhachHang" EntityType="Self.KhachHang" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SanPham" EntityType="Self.SanPham" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__ChiTiet__MaHD__5441852A" Association="Self.FK__ChiTiet__MaHD__5441852A">
+      <End Role="HoaDon" EntitySet="HoaDon" />
+      <End Role="ChiTiet" EntitySet="ChiTiet" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChiTiet__MaSP__5535A963" Association="Self.FK__ChiTiet__MaSP__5535A963">
+      <End Role="SanPham" EntitySet="SanPham" />
+      <End Role="ChiTiet" EntitySet="ChiTiet" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HoaDon__MaKH__5070F446" Association="Self.FK__HoaDon__MaKH__5070F446">
+      <End Role="KhachHang" EntitySet="KhachHang" />
+      <End Role="HoaDon" EntitySet="HoaDon" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

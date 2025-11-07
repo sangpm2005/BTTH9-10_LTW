@@ -1,0 +1,23 @@
+﻿@model IEnumerable<BaiTH9.Models.ChuDe>
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fahasa.com</title>
+    <link rel="stylesheet" href="~/Content/css/style.css">
+    <script src="~/Script/js/script.js" defer></script>
+</head>
+<body>
+    <ul class="nav flex-column">
+        @foreach (var item in Model)
+        {
+            <li class="nav-item border">
+                @Html.ActionLink(item.TenChuDe, "HTSachTheoChuDe", "BaiTH9", new { id = item.MaChuDe }, new { @class = "nav-link" })
+            </li>
+        }
+    </ul>
+</body>
+</html>
+

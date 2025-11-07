@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = "Đăng Ký";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="form-container">
+        <h2 class="form-title">Đăng Ký Tài Khoản</h2>
+
+        <!-- Hiển thị thông báo -->
+        @if (ViewBag.Error != null)
+        {
+            <div class="alert alert-danger">@ViewBag.Error</div>
+        }
+        @if (TempData["Success"] != null)
+        {
+            <div class="alert alert-success">@TempData["Success"]</div>
+        }
+
+        <form method="post" action="@Url.Action("Register","BaiTH9")">
+            <div class="form-group">
+                <label for="fullname">Họ và tên</label>
+                <input type="text" id="fullname" name="fullname" required />
+            </div>
+            <div class="form-group">
+                <label for="username">Tài khoản</label>
+                <input type="text" id="username" name="username" required />
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+                <label for="phone">Số điện thoại</label>
+                <input type="tel" id="phone" name="phone" required />
+            </div>
+            <div class="form-group">
+                <label for="password">Mật khẩu</label>
+                <input type="password" id="password" name="password" required />
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">Xác nhận mật khẩu</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required />
+            </div>
+            <button type="submit" class="form-button">Đăng Ký</button>
+        </form>
+
+        <div class="form-footer">
+            <p>
+                Đã có tài khoản?
+                <a href="@Url.Action("Login","BaiTH9")">Đăng nhập ngay</a>
+            </p>
+        </div>
+    </div>
+</div>

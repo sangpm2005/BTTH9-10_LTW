@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QL_BANHANGModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ChiTiet">
+    <Key>
+      <PropertyRef Name="MaHD" />
+      <PropertyRef Name="MaSP" />
+    </Key>
+    <Property Name="MaHD" Type="Int32" Nullable="false" />
+    <Property Name="MaSP" Type="Int32" Nullable="false" />
+    <Property Name="SoLuong" Type="Int32" />
+    <NavigationProperty Name="HoaDon" Relationship="Self.FK__ChiTiet__MaHD__5441852A" FromRole="ChiTiet" ToRole="HoaDon" />
+    <NavigationProperty Name="SanPham" Relationship="Self.FK__ChiTiet__MaSP__5535A963" FromRole="ChiTiet" ToRole="SanPham" />
+  </EntityType>
+  <EntityType Name="HoaDon">
+    <Key>
+      <PropertyRef Name="MaHoaDon" />
+    </Key>
+    <Property Name="MaHoaDon" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NgayHoaDon" Type="DateTime" Precision="0" />
+    <Property Name="MaKH" Type="Int32" />
+    <NavigationProperty Name="ChiTiets" Relationship="Self.FK__ChiTiet__MaHD__5441852A" FromRole="HoaDon" ToRole="ChiTiet" />
+    <NavigationProperty Name="KhachHang" Relationship="Self.FK__HoaDon__MaKH__5070F446" FromRole="HoaDon" ToRole="KhachHang" />
+  </EntityType>
+  <EntityType Name="KhachHang">
+    <Key>
+      <PropertyRef Name="MaKhachHang" />
+    </Key>
+    <Property Name="MaKhachHang" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenKH" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DiaChi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="SoDienThoai" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="HoaDons" Relationship="Self.FK__HoaDon__MaKH__5070F446" FromRole="KhachHang" ToRole="HoaDon" />
+  </EntityType>
+  <EntityType Name="SanPham">
+    <Key>
+      <PropertyRef Name="MaSanPham" />
+    </Key>
+    <Property Name="MaSanPham" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenSP" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DonGia" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="HinhAnh" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="MoTa" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="SoLuongTon" Type="Int32" />
+    <NavigationProperty Name="ChiTiets" Relationship="Self.FK__ChiTiet__MaSP__5535A963" FromRole="SanPham" ToRole="ChiTiet" />
+  </EntityType>
+  <Association Name="FK__ChiTiet__MaHD__5441852A">
+    <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1" />
+    <End Role="ChiTiet" Type="Self.ChiTiet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HoaDon">
+        <PropertyRef Name="MaHoaDon" />
+      </Principal>
+      <Dependent Role="ChiTiet">
+        <PropertyRef Name="MaHD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChiTiet__MaSP__5535A963">
+    <End Role="SanPham" Type="Self.SanPham" Multiplicity="1" />
+    <End Role="ChiTiet" Type="Self.ChiTiet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SanPham">
+        <PropertyRef Name="MaSanPham" />
+      </Principal>
+      <Dependent Role="ChiTiet">
+        <PropertyRef Name="MaSP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HoaDon__MaKH__5070F446">
+    <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="0..1" />
+    <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhachHang">
+        <PropertyRef Name="MaKhachHang" />
+      </Principal>
+      <Dependent Role="HoaDon">
+        <PropertyRef Name="MaKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QL_BANHANGEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ChiTiets" EntityType="Self.ChiTiet" />
+    <EntitySet Name="HoaDons" EntityType="Self.HoaDon" />
+    <EntitySet Name="KhachHangs" EntityType="Self.KhachHang" />
+    <EntitySet Name="SanPhams" EntityType="Self.SanPham" />
+    <AssociationSet Name="FK__ChiTiet__MaHD__5441852A" Association="Self.FK__ChiTiet__MaHD__5441852A">
+      <End Role="HoaDon" EntitySet="HoaDons" />
+      <End Role="ChiTiet" EntitySet="ChiTiets" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChiTiet__MaSP__5535A963" Association="Self.FK__ChiTiet__MaSP__5535A963">
+      <End Role="SanPham" EntitySet="SanPhams" />
+      <End Role="ChiTiet" EntitySet="ChiTiets" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HoaDon__MaKH__5070F446" Association="Self.FK__HoaDon__MaKH__5070F446">
+      <End Role="KhachHang" EntitySet="KhachHangs" />
+      <End Role="HoaDon" EntitySet="HoaDons" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

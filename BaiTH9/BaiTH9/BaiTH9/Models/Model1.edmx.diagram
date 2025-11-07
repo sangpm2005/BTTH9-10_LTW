@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f549e3fe8f4442eb92b8ec8077ab2d5b" Name="Diagram1">
+        <EntityTypeShape EntityType="QL_BANSACHModel.ChiTietDonHang" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_BANSACHModel.ChuDe" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_BANSACHModel.DonHang" Width="1.5" PointX="3" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_BANSACHModel.KhachHang" Width="1.5" PointX="0.75" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_BANSACHModel.NhaXuatBan" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_BANSACHModel.Sach" Width="1.5" PointX="3" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_BANSACHModel.TacGia" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_BANSACHModel.ThamGia" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="QL_BANSACHModel.FK__ChiTietDo__MaDon__5CD6CB2B" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_BANSACHModel.FK__ChiTietDo__MaSac__5DCAEF64" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_BANSACHModel.FK__Sach__MaChuDe__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_BANSACHModel.FK__DonHang__MaKH__59FA5E80" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_BANSACHModel.FK__Sach__MaNXB__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_BANSACHModel.FK__ThamGia__MaSach__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_BANSACHModel.FK__ThamGia__MaTacGi__571DF1D5" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

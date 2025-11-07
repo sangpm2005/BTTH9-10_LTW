@@ -1,0 +1,26 @@
+﻿@model IEnumerable<BaiTH10.Models.SanPham>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h2 class="section-title">Sản Phẩm Nổi Bật</h2>
+    <div class="card-container">
+        @foreach (var item in Model)
+        {
+            <div class="card">
+                <div class="card-img-container">
+                    <img src="~/Content/images/@item.HinhAnh" alt="@item.HinhAnh" class="card-img">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">@item.TenSP</h3>
+                    <p class="card-text">@item.DonGia VND</p>
+                    <a class="btn-buy" href="@Url.Action("ThemMatHang", "BaiTH10", new {msp=item.MaSanPham})">Mua Ngay</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
